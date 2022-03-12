@@ -1,4 +1,4 @@
-from listas_ingrediente import ListaS_Ingrediente
+from listas_ingredientes import ListaS_Ingredientes
 
 
 
@@ -8,7 +8,7 @@ class Pizza():
     self.__especialidad = 0 # se veran en el munu principal
     self.__tiempoElaboracion = 0 # se veran en el munu principal
     self.__cantidad = 0 # se veran en el munu principal
-    self.__listaIngredientes = ListaS_Ingrediente() # estará disponible en una opcion aparte
+    self.__listaIngredientes = ListaS_Ingredientes() # estará disponible en una opcion aparte
 
   def get_idPizza(self):
     return self.__idPizza

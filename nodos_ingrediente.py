@@ -1,10 +1,10 @@
-
+from ingrediente import Ingrediente
 
 
 class NodoS_Ingrediente():
   def __init__(self):
     self.__siguiente = None # NodoS_Ingrediente()
-    self.__ingrediente = None # Ingrediente()
+    self.__ingrediente = Ingrediente() # Ingrediente()
 
   def get_siguiente(self):
     return self.__siguiente

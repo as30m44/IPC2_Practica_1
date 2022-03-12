@@ -7,11 +7,17 @@ class Ingrediente():
     self.__nombre = ""
     self.__cantidad = 0.00
 
+  def get_idIngrediente(self):
+    return self.__idIngrediente
+
   def get_nombre(self):
     return self.__nombre
 
   def get_cantidad(self):
     return self.__cantidad
+
+  def set_idIngrediente(self, idIngrediente):
+    self.__idIngrediente = idIngrediente
 
   def set_nombre(self, nombre):
     self.__nombre = nombre
