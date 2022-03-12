@@ -48,9 +48,11 @@ class ListaS_Ingredientes():
   
   
   def desplegar(self):
-    nodo_n = self.__nodoInicio
-    nodo_n.get_ingrediente().desplegarTitulo()
-
-    while (nodo_n != None):
-      nodo_n.desplegar()
-      nodo_n = nodo_n.get_siguiente()
+    if (self.estaVacio()):
+      print("INGREDIENTE: No ha ingresado ingredientes en esta pizza")
+    else:
+      nodo_n = self.__nodoInicio
+      nodo_n.get_ingrediente().desplegarTitulo()
+      while (nodo_n != None):
+        nodo_n.desplegar()
+        nodo_n = nodo_n.get_siguiente()

@@ -45,8 +45,11 @@ class ListaS_Pizzas():
   
   
   def desplegar(self):
-    nodo_n = self.__nodoInicio
-    nodo_n.get_pizza().desplegarTitulo()
-    while (nodo_n != None):
-      nodo_n.desplegar()
-      nodo_n = nodo_n.get_siguiente()
+    if (self.estaVacio()):
+      print("PIZZA: El menú no tiene pizzas almacenadas")
+    else:
+      nodo_n = self.__nodoInicio
+      nodo_n.get_pizza().desplegarTitulo()
+      while (nodo_n != None):
+        nodo_n.desplegar()
+        nodo_n = nodo_n.get_siguiente()
