@@ -1,3 +1,4 @@
+from turtle import pos
 from nodos_pizza import NodoS_Pizza
 
 
@@ -43,10 +44,20 @@ class ListaS_Pizzas():
   
   def ubicar(self, idPizza):
     self.__nodoActual = self.__nodoInicio
-    if (idPizza <= self.__noPizzas and self.__nodoActual != None):
-      self.__nodoActual = self.__nodoActual.get_siguiente()
+    pos_i = 1
+    encontrado = False
+    if (self.__nodoActual == None):
+      print("PIZZA: El menú no tiene pizzas almacenadas")
     else:
-      print("PIZZA: no se encuentra el item que ha ingresado")
+      if (idPizza <= self.__noPizzas):
+        while (encontrado == False):
+          if (pos_i == idPizza):
+            encontrado = True
+          else:
+            pos_i += 1
+            self.__nodoActual = self.__nodoActual.get_siguiente()
+      else:
+        print("PIZZA: no se encuentra el item que ha ingresado")
   
   
   

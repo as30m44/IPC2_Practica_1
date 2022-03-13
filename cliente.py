@@ -59,15 +59,15 @@ class Cliente():
     
     
   def desplegarTituloFila(self):
-    id = "|" + str("No").rjust(5, " ")
+    id = "|" + str("No").center(5, " ")
     nombre = "|" + str("NOMBRE").center(15, " ")
-    tiempo = "|" + str("tiempo").center(8, " ")
+    tiempo = "|" + str("TIEMPO").center(8, " ")
     direccion = "|" + str("DIRECCION").center(15, " ")
     municipio = "|" + str("MUNICIPIO").center(12, " ")
     departamento = "|" + str("DEPARTAMENTO").center(12, " ") + "|"
-    borde = str("=").ljust(73, "=")
+    borde = str("=").ljust(79, "=")
     print(borde)
-    print(id, nombre, direccion, municipio, departamento)
+    print(id, nombre, tiempo, direccion, municipio, departamento)
     print(borde)
 
 
@@ -79,7 +79,7 @@ class Cliente():
     direccion = "|" + str(self.__direccion).center(15, " ")
     municipio = "|" + str(self.__municipio).center(12, " ")
     departamento = "|" + str(self.__departamento).center(12, " ") + "|"
-    borde = str("-").ljust(69, "-")
+    borde = str("-").ljust(79, "-")
     print(id, nombre, tiempo, direccion, municipio, departamento)
     print(borde)
   

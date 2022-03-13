@@ -1,0 +1,8 @@
+// Tabla
+digraph {
+	0 [label=a1]
+	1 [label=b1]
+	2 [label=c1]
+	0 -> 1
+	2 -> 0
+}

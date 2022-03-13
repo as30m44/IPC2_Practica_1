@@ -45,28 +45,33 @@ class Pizza():
     
     
   def desplegarTitulo(self, opcion):
-    id = "|" + str("No").rjust(5, " ")
-    especialidad = "|" + str("ESPECIALIDAD").center(10, " ")
+    id = "|" + str("No").center(5, " ")
+    especialidad = "|" + str("ESPECIALIDAD").center(15, " ")
     tiempo = "|" + str("TIEMPO").center(10, " ") + "|"
     cantidad = "|" + str("CANTIDAD").center(10, " ") + "|"
-    borde = str("=").ljust(31, "=")
-    print(borde)
     if (opcion == "menu"):
+      borde = str("=").ljust(36, "=")
+      print(borde)
       print(id, especialidad, tiempo)
+      print(borde)
     else:
+      borde = str("=").ljust(49, "=")
+      print(borde)
       print(id, especialidad, tiempo, cantidad)
-    print(borde)
+      print(borde)
 
 
   
   def desplegarFila(self, opcion):
     id = "|" + str(self.__idPizza).rjust(5, " ")
-    especialidad = "|" + str(self.__especialidad).center(10, " ")
+    especialidad = "|" + str(self.__especialidad).center(15, " ")
     tiempo = "|" + str(self.__tiempoElaboracion).center(10, " ") + "|"
-    cantidad = "|" + str(self.__cantidad).center(10, " ") + "|"
-    borde = str("-").ljust(31, "-")
+    cantidad = str(self.__cantidad).center(10, " ") + "|"
     if (opcion == "menu"):
+      borde = str("-").ljust(36, "-")
       print(id, especialidad, tiempo)
+      print(borde)
     else:
+      borde = str("-").ljust(49, "-")
       print(id, especialidad, tiempo, cantidad)
-    print(borde)
+      print(borde)

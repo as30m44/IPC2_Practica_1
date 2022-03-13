@@ -50,6 +50,8 @@ class Cola_Clientes():
       print("CLIENTE: ya no hay órdenes por preparar")
     else:
       # Eliminar el primer nodo de la cola
+      cliente_n = self.__nodoPrimero.get_cliente()
+      tiempo_n = cliente_n.get_tiempoEspera()
       self.__nodoPrimero.desplegarColumna()
       if (self.__nodoPrimero.get_siguiente() == None):
         self.__nodoPrimero = None
@@ -63,11 +65,33 @@ class Cola_Clientes():
       while (nodo_n != None):
         idCliente += 1
         cliente_n = nodo_n.get_cliente()
+        tiempo_m = cliente_n.get_tiempoEspera() - tiempo_n # elimina el tiempo de espera del resto
+        cliente_n.set_tiempoEspera(tiempo_m)
         cliente_n.set_idCliente(idCliente)
         nodo_n.set_cliente(cliente_n)
         nodo_n = nodo_n.get_siguiente()
-      
-
+      self.__noCliente = idCliente
+  
+  
+  
+  def ubicar(self, idCliente):
+    self.__nodoActual = self.__nodoPrimero
+    pos_i = 1
+    encontrado = False
+    if (self.__nodoActual == None):
+      print("CLIENTE: ya no hay órdenes por preparar")
+    else:
+      if (idCliente <= self.__noCliente):
+        while (encontrado == False):
+          if (pos_i == idCliente):
+            encontrado = True
+          else:
+            pos_i += 1
+            self.__nodoActual = self.__nodoActual.get_siguiente()
+        self.__nodoActual.desplegarColumna()
+      else:
+        print("CLIENTE: no se encuentra el item que ha ingresado")
+  
   
   
   def desplegar(self):

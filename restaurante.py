@@ -31,7 +31,6 @@ class Restaurante():
     
     pepperoni.set_especialidad("Pepperoni")
     pepperoni.set_tiempoElaboracion(3)
-    pepperoni.set_cantidad
     for i in range (0, 5, 1):
       ingrediente_n = Ingrediente()
       ingrediente_n.set_idIngrediente("ingrediente p" + str(i))
@@ -108,10 +107,10 @@ class Restaurante():
       self.__listaPizzas.desplegar("menu")
       while (seleccionPizza == 1):
         pizza_n = Pizza()
-        pizzaMax = self.__listaPizzas.get_noPizzas() # tamaño de la lista de pizzas
-        if (pizzaMax != 0):
+        noPizzasMenu = self.__listaPizzas.get_noPizzas() # tamaño de la lista de pizzas
+        if (noPizzasMenu != 0):
           # seleccionar una pizza del menú
-          opcionPizza = self.__inputEsNumero("seleccione una pizza:", 1, pizzaMax)
+          opcionPizza = self.__inputEsNumero("seleccione una pizza:", 1, noPizzasMenu)
           self.__listaPizzas.ubicar(opcionPizza)
           pizza_n = self.__listaPizzas.get_pizza()
           # asignar la cantidad de pizzas
@@ -126,10 +125,11 @@ class Restaurante():
         print("2. DATOS DEL CLIENTE...")
         seleccionPizza = self.__inputEsNumero("¿Cuál es su opción?:", 1, 2)
       # calcula el tiempo total de elaboración de todas las pizzas
+      tiempoElaboracion
       for i in range(1, listaPizzas_n.get_noPizzas() + 1, 1):
-        pizza_n = listaPizzas_n.get_pizza()
-        tiempoElaboracion = pizza_n.get_tiempoElaboracion() * pizza_n.get_cantidad()
         listaPizzas_n.ubicar(i)
+        pizza_n = listaPizzas_n.get_pizza()
+        tiempoElaboracion += (pizza_n.get_tiempoElaboracion() * pizza_n.get_cantidad())
       cliente_n.set_tiempoEspera(tiempoElaboracion)
       cliente_n.set_listaPizzas(listaPizzas_n)
       self.__colaClientes.insertarALaCola(cliente_n)
@@ -142,8 +142,21 @@ class Restaurante():
   
   
   
-  def __entregarPizza(self):
-    self.__colaClientes.eliminarDeLaCola()
+  def __verColaClientes(self):
+    os.system("cls") # limpia la pantalla
+    self.__colaClientes.desplegar()
+    opcionSalida = 1
+    while (opcionSalida == 1):
+      print(self.__espacioVertical)
+      print("1. Ver detalles de alguna orden: ")
+      print("2. CONTROL DE PEDIDOS DE PIZZAS...")
+      opcionSalida = self.__inputEsNumero("¿Cuál es su opción?:", 1, 2)
+      print(self.__espacioVertical)
+      if (opcionSalida == 1):
+        noClientes = self.__colaClientes.get_noCliente()
+        idCliente = self.__inputEsNumero("¿Ingrese el número del cliente:", 1, noClientes)
+        self.__colaClientes.ubicar(idCliente)
+        self.__inputEsCualquierTecla()
   
   
   
@@ -152,7 +165,7 @@ class Restaurante():
   def main(self):
     noOpcion = 0
     self.__crearPizzaIngredientes()
-    while (noOpcion != 6):
+    while (noOpcion != 5):
       os.system("cls") # limpia la pantalla
       # menú principal
       print(self.__borde_1)
@@ -165,11 +178,12 @@ class Restaurante():
       print("1. Datos del nuevo cliente")
       print("2. Entregar pizza(s)")
       print("3. Ver cola de clientes")
-      print("4. Agregar nueva especialidad (pizza) al menú")
-      print("5. Eliminar especialida (pizza) del menú")
-      print("6. Salir del sistema")
+      print("4. Datos del desarrollador")
+      #print("4. Agregar nueva especialidad (pizza) al menú")
+      #print("5. Eliminar especialida (pizza) del menú")
+      print("5. Salir del sistema")
       print(self.__espacioVertical, self.__espacioVertical)
-      noOpcion = self.__inputEsNumero("¿Cuál es su opción?:", 1, 6)
+      noOpcion = self.__inputEsNumero("¿Cuál es su opción?:", 1, 5)
       # acciones del menu
       if (noOpcion == 1): # nuevo cliente
         self.__nuevoCliente()
@@ -178,9 +192,11 @@ class Restaurante():
         self.__colaClientes.eliminarDeLaCola()
         self.__inputEsCualquierTecla()
       elif(noOpcion == 3): # cola de clientes
-        self.__colaClientes.desplegar()
+        self.__verColaClientes()
+      elif(noOpcion == 4): #Datos de desarrollador
+        print("Andres Gustavo Solís Martínez")
+        print("Carné: 200715068")
         self.__inputEsCualquierTecla()
-      # elif(opcion == 2):
       # elif(opcion == 2):
       else:
         print("Opción no válida")
@@ -206,7 +222,7 @@ class Restaurante():
   
   
   def __inputEsCualquierTecla(self):
-    solicitud = input("Presiona cualquier tecla para salir: ")
+    solicitud = input("Presiona cualquier tecla para continuar: ")
     salir = False
     while (salir == False):
       if (solicitud != ""):
