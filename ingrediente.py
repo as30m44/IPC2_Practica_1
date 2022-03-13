@@ -2,10 +2,12 @@
 
 
 class Ingrediente():
+  __idIngrediente = 0
+  __nombre = ""
+  __cantidad = 0.00
+  
   def __init__(self):
-    self.__idIngrediente = 0
-    self.__nombre = ""
-    self.__cantidad = 0.00
+    pass
 
   def get_idIngrediente(self):
     return self.__idIngrediente

@@ -3,10 +3,12 @@ from cliente import Cliente
 
 
 class NodoC_Cliente():
+  __siguiente = None # NodoC_Cliente()
+  __cliente = Cliente()
+  
   def __init__(self):
-    self.__siguiente = None # NodoC_Cliente()
-    self.__cliente = Cliente()
-
+    pass
+  
   def get_siguiente(self):
     return self.__siguiente
   
@@ -28,4 +30,4 @@ class NodoC_Cliente():
   
   def desplegarColumna(self):
     self.__cliente.desplegarColumna()
-    self.__cliente.get_listaPizzas().desplegar()
+    self.__cliente.get_listaPizzas().desplegar("cliente")

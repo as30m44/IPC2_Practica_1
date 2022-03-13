@@ -3,14 +3,16 @@ from nodos_ingrediente import NodoS_Ingrediente
 
 
 class ListaS_Ingredientes():
-  def __init__(self):
-    self.__nodoInicio = None # NodoS_Ingrediente()
-    self.__nodoFinal = None # NodoS_Ingrediente()
-    self.__nodoActual = None # NodoS_Ingrediente()
-    self.__noIngredientes = 0
-    
+  __nodoInicio = None # NodoS_Ingrediente()
+  __nodoFinal = None # NodoS_Ingrediente()
+  __nodoActual = None # NodoS_Ingrediente()
+  __noIngredientes = 0
   
-        
+  def __init__(self):
+    pass
+  
+  
+  
   def estaVacio(self):
     return (self.__nodoInicio == self.__nodoFinal)
   
@@ -47,12 +49,12 @@ class ListaS_Ingredientes():
 
   
   
-  def desplegar(self):
+  def desplegar(self, opcion):
     if (self.estaVacio()):
       print("INGREDIENTE: No ha ingresado ingredientes en esta pizza")
     else:
       nodo_n = self.__nodoInicio
       nodo_n.get_ingrediente().desplegarTitulo()
       while (nodo_n != None):
-        nodo_n.desplegar()
+        nodo_n.desplegar(opcion)
         nodo_n = nodo_n.get_siguiente()

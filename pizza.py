@@ -3,12 +3,14 @@ from listas_ingredientes import ListaS_Ingredientes
 
 
 class Pizza():
+  __idPizza = 0 # se veran en el munu principal
+  __especialidad = "" # se veran en el munu principal
+  __tiempoElaboracion = 0 # se veran en el munu principal
+  __cantidad = 0 # se veran en el munu principal
+  __listaIngredientes = ListaS_Ingredientes() # estará disponible en una opcion aparte
+  
   def __int__(self):
-    self.__idPizza = 0 # se veran en el munu principal
-    self.__especialidad = 0 # se veran en el munu principal
-    self.__tiempoElaboracion = 0 # se veran en el munu principal
-    self.__cantidad = 0 # se veran en el munu principal
-    self.__listaIngredientes = ListaS_Ingredientes() # estará disponible en una opcion aparte
+    pass
 
   def get_idPizza(self):
     return self.__idPizza
@@ -42,23 +44,29 @@ class Pizza():
     
     
     
-  def desplegarTitulo(self):
+  def desplegarTitulo(self, opcion):
     id = "|" + str("No").rjust(5, " ")
     especialidad = "|" + str("ESPECIALIDAD").center(10, " ")
     tiempo = "|" + str("TIEMPO").center(10, " ") + "|"
     cantidad = "|" + str("CANTIDAD").center(10, " ") + "|"
     borde = str("=").ljust(31, "=")
     print(borde)
-    print(id, especialidad, tiempo, cantidad)
+    if (opcion == "menu"):
+      print(id, especialidad, tiempo)
+    else:
+      print(id, especialidad, tiempo, cantidad)
     print(borde)
 
 
   
-  def desplegar(self):
+  def desplegarFila(self, opcion):
     id = "|" + str(self.__idPizza).rjust(5, " ")
     especialidad = "|" + str(self.__especialidad).center(10, " ")
     tiempo = "|" + str(self.__tiempoElaboracion).center(10, " ") + "|"
     cantidad = "|" + str(self.__cantidad).center(10, " ") + "|"
     borde = str("-").ljust(31, "-")
-    print(id, especialidad, tiempo, cantidad)
+    if (opcion == "menu"):
+      print(id, especialidad, tiempo)
+    else:
+      print(id, especialidad, tiempo, cantidad)
     print(borde)

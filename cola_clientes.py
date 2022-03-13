@@ -3,11 +3,14 @@ from nodoc_cliente import NodoC_Cliente
 
 
 class Cola_Clientes():
+  __nodoPrimero = None # NodoC_Cliente()
+  __nodoUltimo = None # NodoC_Cliente()
+  __nodoActual = None # NodoC_Cliente()
+  __noCliente = 0
+  __tiempo = 0
+  
   def	__init__(self):
-    self.__nodoPrimero = None # NodoC_Cliente()
-    self.__nodoUltimo = None # NodoC_Cliente()
-    self.__nodoActual = None # NodoC_Cliente()
-    self.__noCliente = 0
+    pass
 
   def get_cliente(self):
     cliente = self.__nodoActual.get_cliente()
@@ -24,17 +27,20 @@ class Cola_Clientes():
   
   
   def insertarALaCola(self, cliente):
-    nodoNuevo = NodoC_Cliente()
     cliente.set_idCliente(self.__noCliente + 1) # incrementar numeración al cliente
-    nodoNuevo.set_pizza(cliente)
+    self.__tiempo += cliente.get_tiempoEspera() # suma el tiempo de los nodos anteriores
+    cliente.set_tiempoEspera(self.__tiempo)
+    nodoNuevo = NodoC_Cliente()
+    nodoNuevo.set_cliente(cliente)
+    
     if (self.estaVacio()):
-      self.__noCliente = 1
       self.__nodoPrimero = nodoNuevo
       self.__nodoUltimo = nodoNuevo
       self.__nodoActual = nodoNuevo
+      self.__noCliente = 1
     else:
-      self.__nodoFin.set_siguiente(nodoNuevo)
-      self.__nodoFin = nodoNuevo
+      self.__nodoUltimo.set_siguiente(nodoNuevo)
+      self.__nodoUltimo = nodoNuevo
       self.__noCliente += 1
   
   
@@ -43,10 +49,24 @@ class Cola_Clientes():
     if (self.estaVacio()):
       print("CLIENTE: ya no hay órdenes por preparar")
     else:
-      cliente = self.__nodoPrimero.get_cliente()
+      # Eliminar el primer nodo de la cola
       self.__nodoPrimero.desplegarColumna()
-      self.__nodoPrimero = self.__nodoPrimero.get_siguiente()
-      self.__noCliente -= 1
+      if (self.__nodoPrimero.get_siguiente() == None):
+        self.__nodoPrimero = None
+        self.__nodoUltimo = None
+        self.__nodoActual = None
+      else:
+        self.__nodoPrimero = self.__nodoPrimero.get_siguiente()
+      # Re-enumerar los clientes de la lista
+      nodo_n = self.__nodoPrimero
+      idCliente = 0
+      while (nodo_n != None):
+        idCliente += 1
+        cliente_n = nodo_n.get_cliente()
+        cliente_n.set_idCliente(idCliente)
+        nodo_n.set_cliente(cliente_n)
+        nodo_n = nodo_n.get_siguiente()
+      
 
   
   

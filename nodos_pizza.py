@@ -2,10 +2,12 @@ from pizza import Pizza
 
 
 class NodoS_Pizza():
+  __siguiente = None # NodoS_Pizza()
+  __pizza = Pizza() # Pizza()
+  
   def __init__(self):
-    self.__siguiente = None # NodoS_Pizza()
-    self.__pizza = Pizza() # Pizza()
-    
+    pass
+  
   def get_siguiente(self):
     return self.__siguiente
     
@@ -20,5 +22,5 @@ class NodoS_Pizza():
   
   
   
-  def deslplegar(self):
-    self.__pizza.desplegar()
+  def desplegar(self, opcion):
+    self.__pizza.desplegarFila(opcion)
